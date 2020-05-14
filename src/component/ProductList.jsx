@@ -46,7 +46,7 @@ const loadItems = () => {
   return [...items];
 };
 
-export const ProductFinder = () => {
+export const ProductList = () => {
   const [items, setItems] = useState(loadItems());
   const classes = useStyles();
 

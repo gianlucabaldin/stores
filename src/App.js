@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ProductFinder } from "./component/ProductFinder";
+import { ProductList } from "./component/ProductList";
 import { Layout } from "./component/Layout";
 import { StoreList } from "./component/StoreList";
 
@@ -9,7 +9,7 @@ export default () => (
     <Switch>
       <Route exact path="/">
         <Layout>
-          <ProductFinder />
+          <ProductList />
         </Layout>
       </Route>
       <Route path="/store-list">
