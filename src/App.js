@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ProductFinder } from "./component/ProductFinder";
 import { Layout } from "./component/Layout";
+import { StoreList } from "./component/StoreList";
 
 export default () => (
   <Router>
@@ -11,19 +12,11 @@ export default () => (
           <ProductFinder />
         </Layout>
       </Route>
-      <Route path="/store">
+      <Route path="/store-list">
         <Layout>
-          <Store />
+          <StoreList />
         </Layout>
       </Route>
     </Switch>
   </Router>
 );
-
-function Store() {
-  return (
-    <div>
-      <h2>Store</h2>
-    </div>
-  );
-}
