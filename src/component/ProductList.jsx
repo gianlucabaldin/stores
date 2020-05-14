@@ -19,14 +19,6 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     alignItems: "center",
     border: "1px solid lightgrey",
-    flexGrow: 1,
-  },
-  title: {
-    fontSize: 14,
-  },
-  searchBar: {
-    display: "flex",
-    flexGrow: 1,
   },
   results: {
     marginTop: 50,
@@ -56,7 +48,7 @@ export const ProductList = () => {
 
   return (
     <Grid container>
-      <Grid item className={classes.searchBar}>
+      <Grid item xs={12}>
         <Paper component="form" className={classes.root}>
           <SearchIcon style={{ padding: 10 }} />
           <InputBase
@@ -80,7 +72,7 @@ export const ProductList = () => {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item>
+        <Grid item xs={12}>
           {items.map((item) => (
             <Product key={item.id} {...item} />
           ))}
