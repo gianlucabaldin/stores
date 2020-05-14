@@ -18,12 +18,15 @@ const useStyles = makeStyles({
     height: 50,
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center",
+    border: "1px solid lightgrey",
   },
   title: {
     fontSize: 14,
   },
   searchBar: {
-    height: 80,
+    marginTop: 50,
+    marginBottom: 10,
   },
 });
 
@@ -43,17 +46,25 @@ export const ProductFinder = () => {
     <Grid container>
       <Grid item>
         <Paper component="form" className={classes.root}>
-          <SearchIcon />
+          <SearchIcon style={{ padding: 10 }} />
           <InputBase
             className={classes.input}
             placeholder="Di cosa hai bisogno oggi?"
           />
-          <Button size="small">Cerca</Button>
+          <Button size="small" style={{ padding: 10 }}>
+            Cerca
+          </Button>
         </Paper>
       </Grid>
-      <Grid container className={classes.searchBar}>
+      <Grid container>
         <Grid item>
-          <Typography variant="div">Risultati:</Typography>
+          <Typography
+            component="div"
+            variant="h6"
+            className={classes.searchBar}
+          >
+            Risultati:
+          </Typography>
         </Grid>
       </Grid>
       <Grid container>
