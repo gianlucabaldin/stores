@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   buttonSearch: {
     backgroundColor: "#F5A623",
     color: "white",
-    margin: 10,
+    margin: "10px 20px",
   },
   input: {
     flexGrow: 1,
