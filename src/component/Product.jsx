@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Product = ({ ide, name, description }) => {
+export const Product = ({ id, name, description }) => {
   const classes = useStyles();
   return (
     <div>
