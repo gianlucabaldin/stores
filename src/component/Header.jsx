@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Typography, makeStyles, Grid, Box } from "@material-ui/core";
-import { lightBlue } from "@material-ui/core/colors";
+import { makeStyles, Grid, Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
