@@ -1,52 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Button,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
   makeStyles,
+  Grid,
+  Paper,
+  InputBase,
+  Typography,
 } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import stores from "../data/stores.json";
+import { Store } from "./Store";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    height: 50,
     display: "flex",
     justifyContent: "space-between",
-    marginBottom: 20,
+    alignItems: "center",
     border: "1px solid lightgrey",
-    boxShadow: "none",
+    flexGrow: 1,
   },
   title: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 14,
   },
-  button: {
-    backgroundColor: "#7ED321",
+  searchBar: {
+    display: "flex",
+    flexGrow: 1,
+  },
+  results: {
+    marginTop: 50,
+    marginBottom: 10,
+  },
+  buttonSearch: {
+    backgroundColor: "#F5A623",
     color: "white",
+    margin: "10px 20px",
+  },
+  input: {
+    flexGrow: 1,
   },
 });
 
-export const StoreList = ({ id, name, description }) => {
+const loadItems = () => {
+  return [...stores];
+};
+
+export const StoreList = () => {
+  const [items, setItems] = useState(loadItems());
   const classes = useStyles();
+
+  // const onSubmit = (e) => {
+  //   console.log("err = " + JSON.parse(e));
+  // };
+
   return (
-    <div>
-      <Card className={classes.root}>
-        <CardContent>
-          <Typography className={classes.title} gutterBottom>
-            {name}
+    <>
+      <Grid container>
+        <Grid item>
+          <Typography component="div" variant="h6" className={classes.results}>
+            Risultati:
           </Typography>
-          <Typography variant="body2" color="textSecondary">
-            {description}
-          </Typography>
-        </CardContent>
-        <CardActions style={{ padding: 20 }}>
-          <Button size="medium" variant="contained" className={classes.button}>
-            Seleziona
-          </Button>
-        </CardActions>
-      </Card>
-    </div>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item>
+          {items.map((item) => (
+            <Store key={item.id} {...item} />
+          ))}
+        </Grid>
+      </Grid>
+    </>
   );
 };
