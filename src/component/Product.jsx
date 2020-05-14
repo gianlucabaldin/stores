@@ -14,9 +14,17 @@ const useStyles = makeStyles({
     minWidth: 275,
     display: "flex",
     justifyContent: "space-between",
+    marginBottom: 20,
+    border: "1px solid lightgrey",
+    boxShadow: "none",
   },
   title: {
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  button: {
+    backgroundColor: "#7ED321",
+    color: "white",
   },
 });
 
@@ -26,20 +34,17 @@ export const Product = ({ ide, name, description }) => {
     <div>
       <Card className={classes.root}>
         <CardContent>
-          <Typography
-            variant="h4"
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Name: {name}
+          <Typography className={classes.title} gutterBottom>
+            {name}
           </Typography>
-          <Typography variant="body2" component="p">
-            Desc: {description}
+          <Typography variant="body2" color="textSecondary">
+            {description}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small">Seleziona</Button>
+        <CardActions style={{ padding: 20 }}>
+          <Button size="medium" variant="contained" className={classes.button}>
+            Seleziona
+          </Button>
         </CardActions>
       </Card>
     </div>
