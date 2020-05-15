@@ -33,7 +33,6 @@ export const ConfirmDialog = ({ visible, handleClose }) => {
   return (
     <Dialog
       open={visible}
-      onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
@@ -70,11 +69,6 @@ export const ConfirmDialog = ({ visible, handleClose }) => {
           </Button>
         </DialogContentText>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose} color="primary" autoFocus>
-          Chiudi
-        </Button>
-      </DialogActions>
     </Dialog>
   );
 };

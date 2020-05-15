@@ -36,12 +36,12 @@ export const StoreList = () => {
 
   const onClick = (e) => {
     debugger;
-    // setModalVisibible(true);
+    setModalVisibible(true);
   };
 
   const handleClose = () => {
     debugger;
-    // setModalVisibible(false);
+    setModalVisibible(false);
   };
 
   return (
@@ -56,12 +56,11 @@ export const StoreList = () => {
       <Grid container>
         <Grid item xs={12}>
           {items.map((item) => (
-            // <Store key={item.id} {...item} onClick={(e) => onClick(e)} />
             <Store key={item.id} {...item} onClick={onClick} />
           ))}
         </Grid>
       </Grid>
-      {/* <ConfirmDialog open={modaleVisible} handleClose={handleClose} /> */}
+      <ConfirmDialog visible={modaleVisible} handleClose={handleClose} />
     </>
   );
 };

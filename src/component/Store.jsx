@@ -29,9 +29,8 @@ const useStyles = makeStyles({
 
 export const Store = ({ id, name, distance, onClick }) => {
   const classes = useStyles();
-  const x = () => {
-    onClick(id);
-  };
+  const handleClick = () => onClick(id);
+
   return (
     <div>
       <Card className={classes.root}>
@@ -50,8 +49,7 @@ export const Store = ({ id, name, distance, onClick }) => {
           size="medium"
           variant="contained"
           className={classes.button}
-          onClick={x}
-          // onClick={onClick(id)}
+          onClick={handleClick}
         >
           Seleziona
         </Button>
