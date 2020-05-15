@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 
-import {
-  Button,
-  makeStyles,
-  Grid,
-  Paper,
-  InputBase,
-  Typography,
-} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+import { makeStyles, Grid, Typography } from "@material-ui/core";
 import stores from "../data/stores.json";
 import { Store } from "./Store";
 import { ConfirmDialog } from "./ConfirmDialog";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles({
   results: {
@@ -26,6 +19,8 @@ const loadStores = () => {
 
 export const StoreList = () => {
   const classes = useStyles();
+
+  const productId = useLocation().state.productId || undefined;
 
   const [items, setItems] = useState(loadStores());
   const [modaleVisible, setModalVisibible] = useState(false);

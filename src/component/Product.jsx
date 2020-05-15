@@ -8,6 +8,7 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -42,14 +43,23 @@ export const Product = ({ id, name, description, handleClick }) => {
           </Typography>
         </CardContent>
         <CardActions style={{ padding: 20 }}>
-          <Button
-            size="medium"
-            variant="contained"
-            className={classes.button}
-            onClick={handleClick}
+          <Link
+            to={{
+              pathname: "/store-list",
+              state: {
+                productId: id,
+              },
+            }}
           >
-            Seleziona
-          </Button>
+            <Button
+              size="medium"
+              variant="contained"
+              className={classes.button}
+              // onClick={handleClick}
+            >
+              Seleziona
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </div>
