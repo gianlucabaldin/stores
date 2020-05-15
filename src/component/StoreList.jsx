@@ -5,6 +5,7 @@ import stores from "../data/stores.json";
 import { Store } from "./Store";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { useLocation } from "react-router-dom";
+import { loadStores } from "../utils/storeUtils";
 
 const useStyles = makeStyles({
   results: {
@@ -13,16 +14,16 @@ const useStyles = makeStyles({
   },
 });
 
-const loadStores = () => {
-  return [...stores];
-};
+// const loadStores = () => {
+//   return [...stores];
+// };
 
 export const StoreList = () => {
   const classes = useStyles();
 
   const productId = useLocation().state.productId || undefined;
 
-  const [items, setItems] = useState(loadStores());
+  const [items, setItems] = useState(loadStores(productId));
   const [modaleVisible, setModalVisibible] = useState(false);
 
   // const onSubmit = (e) => {
