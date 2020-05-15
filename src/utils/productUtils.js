@@ -1,7 +1,7 @@
 import items from "../data/items.json";
 
 /**
- * Load the local JSON "products" and sort it alphabetically per "name" field
+ * Load the local JSON "items" and sort it alphabetically per "name" field
  */
 export const loadItems = () => {
   const products = [...items];
