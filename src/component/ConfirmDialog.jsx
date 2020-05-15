@@ -5,26 +5,31 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { Typography, makeStyles } from "@material-ui/core";
+import { Typography, makeStyles, Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    //   minWidth: 275,
-    //   display: "flex",
-    //   justifyContent: "space-between",
-    //   marginBottom: 20,
-    //   border: "1px solid lightgrey",
-    //   boxShadow: "none",
+    textAlign: "center",
+  },
+  title: {
+    color: "blue",
+    fontSize: "2rem",
   },
   field: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "sec",
+    fontSize: "1.5rem",
+    color: "grey",
   },
-  value: {
-    //   backgroundColor: "#7ED321",
-    //   color: "white",
-    fontSize: 16,
+  content: {
+    margin: "0 auto",
+  },
+  box: {
+    textAlign: "left",
+  },
+  textBlack: {
+    color: "black",
+  },
+  footer: {
+    justifyContent: "center",
   },
 });
 
@@ -35,39 +40,44 @@ export const ConfirmDialog = ({ visible, handleClose }) => {
       open={visible}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      className={classes.root}
+      fullWidth={true}
     >
-      <DialogTitle id="alert-dialog-title">Azione Confermata</DialogTitle>
-      <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-          <Typography
-            className={classes.field}
-            color={"textSecondary"}
-            gutterBottom
-          >
-            Azione Confermata
-          </Typography>
-          <Typography className={classes.field} gutterBottom>
-            Prodotto
-          </Typography>
-          <Typography
-            className={classes.field}
-            color={"textSecondary"}
-            gutterBottom
-          >
-            Magazzino
-          </Typography>
-          <Typography className={classes.value} gutterBottom>
-            Articoli inviati
-          </Typography>
-          <Button
-            size="medium"
-            variant="contained"
-            className={classes.button}
-            onClick={handleClose}
-          >
+      <DialogTitle id="alert-dialog-title" className={classes.title}>
+        Azione Confermata
+      </DialogTitle>
+      <DialogContent className={classes.content}>
+        <DialogContentText
+          id="alert-dialog-description"
+          style={{ textAlign: "center" }}
+        >
+          <Box component="div" className={classes.box}>
+            <Typography className={classes.field} color="">
+              Prodotto:{" "}
+              <Box className={classes.textBlack} component="span">
+                xxx
+              </Box>
+            </Typography>
+            <Typography className={classes.field}>
+              Magazzino:{" "}
+              <Box className={classes.textBlack} component="span">
+                yyy
+              </Box>
+            </Typography>
+            <Typography className={classes.field}>
+              Articoli inviati:{" "}
+              <Box className={classes.textBlack} component="span">
+                zzz
+              </Box>
+            </Typography>
+          </Box>
+        </DialogContentText>
+        <DialogActions className={classes.footer}>
+          <Button size="medium" variant="outlined" onClick={handleClose}>
             Chiudi
           </Button>
-        </DialogContentText>
+        </DialogActions>
+        {/* </DialogContentText> */}
       </DialogContent>
     </Dialog>
   );
