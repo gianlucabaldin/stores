@@ -29,6 +29,7 @@ const useStyles = makeStyles({
 });
 
 export const Product = ({ id, name, description }) => {
+  const handleClick = () => {};
   const classes = useStyles();
   return (
     <div>
@@ -42,7 +43,12 @@ export const Product = ({ id, name, description }) => {
           </Typography>
         </CardContent>
         <CardActions style={{ padding: 20 }}>
-          <Button size="medium" variant="contained" className={classes.button}>
+          <Button
+            size="medium"
+            variant="contained"
+            className={classes.button}
+            onClick={handleClick}
+          >
             Seleziona
           </Button>
         </CardActions>
