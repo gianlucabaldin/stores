@@ -43,17 +43,17 @@ export const ProductList = () => {
   const classes = useStyles();
 
   const [items, setItems] = useState(loadItems());
-  const [modaleVisible, setModalVisibible] = React.useState(false);
+  // const [modaleVisible, setModalVisibible] = React.useState(false);
 
-  const handleClickOpen = ({ field, value }) => {
-    debugger;
-    setModalVisibible(true);
-  };
+  // const handleClickOpen = ({ field, value }) => {
+  //   debugger;
+  //   setModalVisibible(true);
+  // };
 
-  const handleClose = () => {
-    debugger;
-    setModalVisibible(false);
-  };
+  // const handleClose = () => {
+  //   debugger;
+  //   setModalVisibible(false);
+  // };
 
   // const onSubmit = (e) => {
   //   console.log("err = " + JSON.parse(e));
@@ -97,7 +97,7 @@ export const ProductList = () => {
           </Grid>
         </Grid>
       </Grid>
-      <ConfirmDialog open={modaleVisible} />
+      {/* <ConfirmDialog open={modaleVisible} /> */}
     </>
   );
 };

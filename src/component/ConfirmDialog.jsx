@@ -28,11 +28,11 @@ const useStyles = makeStyles({
   },
 });
 
-export const ConfirmDialog = ({ open, handleClose }) => {
+export const ConfirmDialog = ({ visible, handleClose }) => {
   const classes = useStyles();
   return (
     <Dialog
-      open={open}
+      open={visible}
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
@@ -64,7 +64,7 @@ export const ConfirmDialog = ({ open, handleClose }) => {
             size="medium"
             variant="contained"
             className={classes.button}
-            // onClick={handleClick}
+            onClick={handleClose}
           >
             Chiudi
           </Button>

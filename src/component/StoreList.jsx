@@ -11,6 +11,7 @@ import {
 import SearchIcon from "@material-ui/icons/Search";
 import stores from "../data/stores.json";
 import { Store } from "./Store";
+import { ConfirmDialog } from "./ConfirmDialog";
 
 const useStyles = makeStyles({
   results: {
@@ -24,12 +25,24 @@ const loadStores = () => {
 };
 
 export const StoreList = () => {
-  const [items, setItems] = useState(loadStores());
   const classes = useStyles();
+
+  const [items, setItems] = useState(loadStores());
+  const [modaleVisible, setModalVisibible] = React.useState(false);
 
   // const onSubmit = (e) => {
   //   console.log("err = " + JSON.parse(e));
   // };
+
+  const onClick = (e) => {
+    debugger;
+    // setModalVisibible(true);
+  };
+
+  const handleClose = () => {
+    debugger;
+    // setModalVisibible(false);
+  };
 
   return (
     <>
@@ -43,10 +56,12 @@ export const StoreList = () => {
       <Grid container>
         <Grid item xs={12}>
           {items.map((item) => (
-            <Store key={item.id} {...item} />
+            // <Store key={item.id} {...item} onClick={(e) => onClick(e)} />
+            <Store key={item.id} {...item} onClick={onClick} />
           ))}
         </Grid>
       </Grid>
+      {/* <ConfirmDialog open={modaleVisible} handleClose={handleClose} /> */}
     </>
   );
 };

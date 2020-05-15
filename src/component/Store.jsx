@@ -27,8 +27,11 @@ const useStyles = makeStyles({
   },
 });
 
-export const Store = ({ name, distance }) => {
+export const Store = ({ id, name, distance, onClick }) => {
   const classes = useStyles();
+  const x = () => {
+    onClick(id);
+  };
   return (
     <div>
       <Card className={classes.root}>
@@ -43,7 +46,13 @@ export const Store = ({ name, distance }) => {
             {distance} km
           </Typography>
         </Box>
-        <Button size="medium" variant="contained" className={classes.button}>
+        <Button
+          size="medium"
+          variant="contained"
+          className={classes.button}
+          onClick={x}
+          // onClick={onClick(id)}
+        >
           Seleziona
         </Button>
       </Card>
