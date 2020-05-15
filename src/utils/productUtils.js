@@ -11,6 +11,10 @@ export const loadItems = () => {
   );
 };
 
+/**
+ * Get the filter string and filter the list
+ * @param {text} string the string filter inserted by the user
+ */
 export const filterProducts = (text) => {
   const initialList = loadItems();
   // if input is empty string, it means the user has previously inserted a filter and then delete it
