@@ -4,7 +4,7 @@ import { Container, Grid } from "@material-ui/core";
 import { Header } from "./Header";
 
 export const Layout = (props) => (
-  <Container>
+  <Container fixed>
     <Header />
     <Grid container>
       <Grid item xs={12}>
