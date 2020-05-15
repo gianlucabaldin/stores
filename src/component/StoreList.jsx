@@ -28,13 +28,13 @@ export const StoreList = () => {
   const classes = useStyles();
 
   const [items, setItems] = useState(loadStores());
-  const [modaleVisible, setModalVisibible] = React.useState(false);
+  const [modaleVisible, setModalVisibible] = useState(false);
 
   // const onSubmit = (e) => {
   //   console.log("err = " + JSON.parse(e));
   // };
 
-  const onClick = (e) => {
+  const onStoreClick = (e) => {
     debugger;
     setModalVisibible(true);
   };
@@ -56,7 +56,7 @@ export const StoreList = () => {
       <Grid container>
         <Grid item xs={12}>
           {items.map((item) => (
-            <Store key={item.id} {...item} onClick={onClick} />
+            <Store key={item.id} {...item} onClick={onStoreClick} />
           ))}
         </Grid>
       </Grid>
