@@ -35,29 +35,21 @@ const useStyles = makeStyles({
   },
 });
 
+/**
+ * Load the local JSON "items" and sort it alphabetically per "name" field
+ */
 const loadItems = () => {
-  return [...items];
+  const products = [...items];
+  return products.sort((a, b) =>
+    // uppercase to ignore case
+    a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
+  );
 };
 
 export const ProductList = () => {
   const classes = useStyles();
 
   const [items, setItems] = useState(loadItems());
-  // const [modaleVisible, setModalVisibible] = React.useState(false);
-
-  // const handleClickOpen = ({ field, value }) => {
-  //   debugger;
-  //   setModalVisibible(true);
-  // };
-
-  // const handleClose = () => {
-  //   debugger;
-  //   setModalVisibible(false);
-  // };
-
-  // const onSubmit = (e) => {
-  //   console.log("err = " + JSON.parse(e));
-  // };
 
   return (
     <>
