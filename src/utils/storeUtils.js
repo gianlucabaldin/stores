@@ -8,11 +8,13 @@ import stores from "../data/stores.json";
  */
 export const loadStores = (productId) => {
   const storeList = [...stores];
-  return storeList.filter((store) =>
+  const filtered = storeList.filter((store) =>
     store.items.some(
       (product) => product.id === productId && product.qty < product.minQty
     )
   );
+  const sorted = sortStoreList(filtered);
+  return sorted;
 };
 
 /**
@@ -33,3 +35,10 @@ export const filterProducts = (text) => {
   );
   return filtered;
 };*/
+
+const sortStoreList = (storeList) => {
+  debugger;
+  const ordered = storeList.sort((a, b) => (a.distance > b.distance ? 1 : -1));
+  debugger;
+  return ordered;
+};
