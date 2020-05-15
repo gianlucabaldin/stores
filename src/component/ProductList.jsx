@@ -9,9 +9,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import items from "../data/items.json";
 import { Product } from "./Product";
-import { ConfirmDialog } from "./ConfirmDialog";
+import { loadItems } from "../utils/productUtils";
+import { filterProducts } from "../utils/productUtils";
 
 const useStyles = makeStyles({
   root: {
@@ -35,34 +35,14 @@ const useStyles = makeStyles({
   },
 });
 
-/**
- * Load the local JSON "products" and sort it alphabetically per "name" field
- */
-const loadItems = () => {
-  const products = [...items];
-  return products.sort((a, b) =>
-    // uppercase to ignore case
-    a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
-  );
-};
-
 export const ProductList = () => {
   const classes = useStyles();
 
   const [products, setProducts] = useState(loadItems());
 
-  const filterProducts = (event) => {
+  const handleChange = (event) => {
     const text = event.currentTarget.value;
-    const initialList = loadItems();
-    // if input is empty string, it means the user has previously inserted a filter and then delete it
-    if (!text || text === "") {
-      return setProducts(initialList);
-    }
-    const filtered = initialList.filter((product) => {
-      debugger;
-      return product.name.toUpperCase().includes(text.toUpperCase());
-    });
-    setProducts(filtered);
+    setProducts(filterProducts(text));
   };
 
   return (
@@ -74,7 +54,7 @@ export const ProductList = () => {
             <InputBase
               className={classes.input}
               placeholder="Di cosa hai bisogno oggi?"
-              onChange={filterProducts}
+              onChange={handleChange}
               // onKeyPress={filterProducts}
             />
             <Button
@@ -105,7 +85,6 @@ export const ProductList = () => {
           </Grid>
         </Grid>
       </Grid>
-      {/* <ConfirmDialog open={modaleVisible} /> */}
     </>
   );
 };
