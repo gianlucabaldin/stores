@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Load the local JSON "items" and sort it alphabetically per "name" field
+ * Load the local JSON "products" and sort it alphabetically per "name" field
  */
 const loadItems = () => {
   const products = [...items];
@@ -49,7 +49,21 @@ const loadItems = () => {
 export const ProductList = () => {
   const classes = useStyles();
 
-  const [items, setItems] = useState(loadItems());
+  const [products, setProducts] = useState(loadItems());
+
+  const filterProducts = (event) => {
+    const text = event.currentTarget.value;
+    const initialList = loadItems();
+    // if input is empty string, it means the user has previously inserted a filter and then delete it
+    if (!text || text === "") {
+      return setProducts(initialList);
+    }
+    const filtered = initialList.filter((product) => {
+      debugger;
+      return product.name.toUpperCase().includes(text.toUpperCase());
+    });
+    setProducts(filtered);
+  };
 
   return (
     <>
@@ -60,6 +74,8 @@ export const ProductList = () => {
             <InputBase
               className={classes.input}
               placeholder="Di cosa hai bisogno oggi?"
+              onChange={filterProducts}
+              // onKeyPress={filterProducts}
             />
             <Button
               size="medium"
@@ -83,8 +99,8 @@ export const ProductList = () => {
         </Grid>
         <Grid container>
           <Grid item xs={12}>
-            {items.map((item) => (
-              <Product key={item.id} {...item} />
+            {products.map((product) => (
+              <Product key={product.id} {...product} />
             ))}
           </Grid>
         </Grid>
