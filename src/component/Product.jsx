@@ -48,6 +48,7 @@ export const Product = ({ id, name, description, handleClick }) => {
               pathname: "/store-list",
               state: {
                 productId: id,
+                productName: name,
               },
             }}
           >
