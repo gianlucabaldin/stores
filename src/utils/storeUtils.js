@@ -3,7 +3,6 @@ import stores from "../data/stores.json";
 /**
  * Load the local JSON "stores" and filter by productId chosen in homepage
  * (Products), and passed through react-router-dom's state within the <Link>
- *
  * @param {productId} productId the chosen productId
  */
 export const loadStores = (productId) => {
@@ -13,32 +12,40 @@ export const loadStores = (productId) => {
       (product) => product.id === productId && product.qty < product.minQty
     )
   );
-  const sorted = sortStoreList(filtered);
-  return sorted;
+  return sortByDistance(filtered, productId);
 };
 
 /**
  * Get the filter string and filter the list
- * @param {text} string the string filter inserted by the user
+ * @param {array} storeList the string filter inserted by the user
+ * @param {number} productId the productId to filter by
  */
-/*
-export const filterProducts = (text) => {
-  const initialList = loadStores();
-  // if input is empty string, it means the user has previously inserted a filter and then delete it
-  if (!text || text === "") {
-    return initialList;
-  }
-  const filtered = initialList.filter(
-    (product) =>
-      product.name.toUpperCase().includes(text.toUpperCase()) ||
-      product.description.toUpperCase().includes(text.toUpperCase())
-  );
-  return filtered;
-};*/
+const sortByDistance = (storeList, productId) => {
+  const orderedByDistance = storeList.sort((a, b) => {
+    if (a.distance === b.distance) {
+      // if same distance, sort by items[i].qty
+      return sortByQuantity(a.items, b.items, productId);
+    }
+    return a.distance > b.distance ? 1 : -1;
+  });
+  return orderedByDistance;
+};
 
-const sortStoreList = (storeList) => {
-  debugger;
-  const ordered = storeList.sort((a, b) => (a.distance > b.distance ? 1 : -1));
-  debugger;
-  return ordered;
+/**
+ * Compare two arrays and sort them by their field item[i].qty
+ * @param {array} itemsStoreA storeA's items
+ * @param {array} itemsStoreB storeB's items
+ * @param {number} productId the productId to filter by
+ */
+const sortByQuantity = (itemsStoreA, itemsStoreB, productId) => {
+  let order = 1;
+  itemsStoreA.forEach((itemA) => {
+    itemsStoreB.forEach((itemB) => {
+      if (itemA.id === productId && itemB.id === productId) {
+        order = itemA.qty > itemB.qty ? 1 : -1;
+        return;
+      }
+    });
+  });
+  return order;
 };
