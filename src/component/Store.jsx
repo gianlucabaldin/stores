@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 
 export const Store = ({ id, name, distance, onClick }) => {
   const classes = useStyles();
-  const handleClick = () => onClick(id);
+  const handleClick = () => onClick(id, name);
 
   return (
     <div>

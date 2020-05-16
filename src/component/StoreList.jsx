@@ -16,11 +16,9 @@ const useStyles = makeStyles({
 
 export const StoreList = () => {
   const classes = useStyles();
-
   const { productId, productName } = useLocation().state;
-
-  const [stores, setStores] = useState(loadStores(productId));
   const [modalInfo, setModalInfo] = useState({ visible: false });
+  const stores = loadStores(productId);
 
   const onStoreClick = (storeId, storeName) => {
     setModalInfo({
