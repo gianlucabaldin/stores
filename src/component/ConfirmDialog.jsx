@@ -6,6 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Typography, makeStyles, Box } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -79,9 +80,11 @@ export const ConfirmDialog = ({
           </Box>
         </DialogContentText>
         <DialogActions className={classes.footer}>
-          <Button size="medium" variant="outlined" onClick={handleClose}>
-            Chiudi
-          </Button>
+          <Link to="/">
+            <Button size="medium" variant="outlined" onClick={handleClose}>
+              Chiudi
+            </Button>
+          </Link>
         </DialogActions>
       </DialogContent>
     </Dialog>
