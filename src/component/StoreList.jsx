@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 import { makeStyles, Grid, Typography } from "@material-ui/core";
-import stores from "../data/stores.json";
+// import stores from "../data/stores.json";
 import { Store } from "./Store";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { useLocation } from "react-router-dom";
-import { loadStores } from "../utils/storeUtils";
+import { loadStores, getCountItems } from "../utils/storeUtils";
 
 const useStyles = makeStyles({
   results: {
@@ -14,30 +14,26 @@ const useStyles = makeStyles({
   },
 });
 
-// const loadStores = () => {
-//   return [...stores];
-// };
-
 export const StoreList = () => {
   const classes = useStyles();
 
-  const productId = useLocation().state.productId || undefined;
+  const { productId, productName } = useLocation().state;
 
-  const [items, setItems] = useState(loadStores(productId));
-  const [modaleVisible, setModalVisibible] = useState(false);
+  const [stores, setStores] = useState(loadStores(productId));
+  const [modalInfo, setModalInfo] = useState({ visible: false });
 
-  // const onSubmit = (e) => {
-  //   console.log("err = " + JSON.parse(e));
-  // };
-
-  const onStoreClick = (e) => {
-    debugger;
-    setModalVisibible(true);
+  const onStoreClick = (storeId, storeName) => {
+    setModalInfo({
+      visible: true,
+      product: productName,
+      store: storeName,
+      count: getCountItems(productId, storeId),
+      handleClose,
+    });
   };
 
   const handleClose = () => {
-    debugger;
-    setModalVisibible(false);
+    setModalInfo(false);
   };
 
   return (
@@ -51,12 +47,12 @@ export const StoreList = () => {
       </Grid>
       <Grid container>
         <Grid item xs={12}>
-          {items.map((item) => (
+          {stores.map((item) => (
             <Store key={item.id} {...item} onClick={onStoreClick} />
           ))}
         </Grid>
       </Grid>
-      <ConfirmDialog visible={modaleVisible} handleClose={handleClose} />
+      <ConfirmDialog {...modalInfo} />
     </>
   );
 };

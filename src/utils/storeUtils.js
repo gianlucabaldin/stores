@@ -49,3 +49,21 @@ const sortByQuantity = (itemsStoreA, itemsStoreB, productId) => {
   });
   return order;
 };
+
+/**
+ * Find the store with the selected product and calculate the difference
+ * @param {number} productId the productId to filter by
+ * @param {number} storeId the storeId to filter by
+ */
+export const getCountItems = (productId, storeId) => {
+  debugger;
+  let quantity;
+  const store = stores.find((store) => store.id === storeId);
+  store.items.forEach((item) => {
+    if (item.id === productId) {
+      quantity = item.minQty - item.qty;
+      return;
+    }
+  });
+  return quantity;
+};

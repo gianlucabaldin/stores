@@ -33,7 +33,13 @@ const useStyles = makeStyles({
   },
 });
 
-export const ConfirmDialog = ({ visible, handleClose }) => {
+export const ConfirmDialog = ({
+  visible,
+  product,
+  store,
+  count,
+  handleClose,
+}) => {
   const classes = useStyles();
   return (
     <Dialog
@@ -55,19 +61,19 @@ export const ConfirmDialog = ({ visible, handleClose }) => {
             <Typography className={classes.field} color="">
               Prodotto:{" "}
               <Box className={classes.textBlack} component="span">
-                xxx
+                {product}
               </Box>
             </Typography>
             <Typography className={classes.field}>
               Magazzino:{" "}
               <Box className={classes.textBlack} component="span">
-                yyy
+                {store}
               </Box>
             </Typography>
             <Typography className={classes.field}>
               Articoli inviati:{" "}
               <Box className={classes.textBlack} component="span">
-                zzz
+                {count}
               </Box>
             </Typography>
           </Box>
@@ -77,7 +83,6 @@ export const ConfirmDialog = ({ visible, handleClose }) => {
             Chiudi
           </Button>
         </DialogActions>
-        {/* </DialogContentText> */}
       </DialogContent>
     </Dialog>
   );
