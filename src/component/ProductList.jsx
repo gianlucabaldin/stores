@@ -55,7 +55,6 @@ export const ProductList = () => {
               className={classes.input}
               placeholder="Di cosa hai bisogno oggi?"
               onChange={handleChange}
-              // onKeyPress={filterProducts}
             />
             <Button
               size="medium"

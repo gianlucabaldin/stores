@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { makeStyles, Grid, Typography } from "@material-ui/core";
-// import stores from "../data/stores.json";
 import { Store } from "./Store";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { useLocation } from "react-router-dom";

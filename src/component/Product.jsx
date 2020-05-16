@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Product = ({ id, name, description, handleClick }) => {
+export const Product = ({ id, name, description }) => {
   const classes = useStyles();
   return (
     <div>
@@ -56,7 +56,6 @@ export const Product = ({ id, name, description, handleClick }) => {
               size="medium"
               variant="contained"
               className={classes.button}
-              // onClick={handleClick}
             >
               Seleziona
             </Button>
