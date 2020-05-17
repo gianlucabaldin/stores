@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
 import { makeStyles, Grid, Typography, Button } from "@material-ui/core";
 import { Store } from "./Store";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { useLocation, Link } from "react-router-dom";
 import { loadStores, getCountItems } from "../utils/storeUtils";
+import { Layout } from "./Layout";
 
 const useStyles = makeStyles({
   results: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const StoreList = () => {
+const StoreList = () => {
   const classes = useStyles();
   const { productId, productName } = useLocation().state;
   const [modalInfo, setModalInfo] = useState({ visible: false });
@@ -70,3 +70,9 @@ export const StoreList = () => {
     </>
   );
 };
+
+export default () => (
+  <Layout>
+    <StoreList />
+  </Layout>
+);

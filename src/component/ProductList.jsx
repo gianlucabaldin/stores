@@ -12,6 +12,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Product } from "./Product";
 import { loadItems } from "../utils/productUtils";
 import { filterProducts } from "../utils/productUtils";
+import { Layout } from "./Layout";
 
 const useStyles = makeStyles({
   root: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ProductList = () => {
+const ProductList = () => {
   const classes = useStyles();
 
   const [products, setProducts] = useState(loadItems());
@@ -93,3 +94,9 @@ export const ProductList = () => {
     </>
   );
 };
+
+export default () => (
+  <Layout>
+    <ProductList />
+  </Layout>
+);
