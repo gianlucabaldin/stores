@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Button, Card, Typography, makeStyles, Box } from "@material-ui/core";
+import { Button, Typography, makeStyles, Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -9,7 +9,6 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     marginBottom: 20,
-    height: 50,
     alignItems: "center",
     border: "1px solid lightgrey",
     boxShadow: "none",
@@ -33,19 +32,22 @@ export const Store = ({ id, name, distance, onClick }) => {
   const handleClick = () => onClick(id, name);
 
   return (
-    <div>
-      <Card className={classes.root}>
+    <Grid container className={classes.root}>
+      <Grid item md={5} xs={4}>
         <Typography className={classes.title} gutterBottom>
           {name}
         </Typography>
-        <Box className={classes.distanceBox}>
-          <Typography component="span" variant="body2" color="textSecondary">
-            Distanza:{" "}
-          </Typography>
-          <Typography component="span" className={classes.title} gutterBottom>
-            {distance} km
-          </Typography>
-        </Box>
+      </Grid>
+      <Grid item md={5} xs={4}>
+        {/* <Box className={classes.distanceBox}> */}
+        <Typography component="span" variant="body2" color="textSecondary">
+          Distanza:{" "}
+        </Typography>
+        <Typography component="span" className={classes.title} gutterBottom>
+          {distance} km
+        </Typography>
+      </Grid>
+      <Grid item md={2} xs={4} style={{ textAlign: "right" }}>
         <Button
           size="medium"
           variant="contained"
@@ -54,8 +56,8 @@ export const Store = ({ id, name, distance, onClick }) => {
         >
           Seleziona
         </Button>
-      </Card>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 
