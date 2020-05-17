@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { makeStyles, Grid, Typography } from "@material-ui/core";
+import { makeStyles, Grid, Typography, Button } from "@material-ui/core";
 import { Store } from "./Store";
 import { ConfirmDialog } from "./ConfirmDialog";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { loadStores, getCountItems } from "../utils/storeUtils";
 
 const useStyles = makeStyles({
@@ -44,9 +44,26 @@ export const StoreList = () => {
       </Grid>
       <Grid container>
         <Grid item xs={12}>
-          {stores.map((item) => (
-            <Store key={item.id} {...item} onClick={onStoreClick} />
-          ))}
+          {stores && stores.length > 0 ? (
+            stores.map((item) => (
+              <Store key={item.id} {...item} onClick={onStoreClick} />
+            ))
+          ) : (
+            <>
+              <Typography variant="body2" color="textSecondary">
+                Nessun risultato trovato
+              </Typography>
+              <Link to="/">
+                <Button
+                  size="medium"
+                  variant="contained"
+                  style={{ marginTop: 30 }}
+                >
+                  indietro
+                </Button>
+              </Link>
+            </>
+          )}
         </Grid>
       </Grid>
       <ConfirmDialog {...modalInfo} />
