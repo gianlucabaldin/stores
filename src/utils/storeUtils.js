@@ -55,7 +55,7 @@ const sortByQuantity = (itemsStoreA, itemsStoreB, productId) => {
  * @param {number} productId the productId to filter by
  * @param {number} storeId the storeId to filter by
  */
-export const getCountItems = (productId, storeId) => {
+export const getItemsCount = (productId, storeId) => {
   let quantity;
   const store = stores.find((store) => store.id === storeId);
   store.items.forEach((item) => {

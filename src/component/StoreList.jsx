@@ -3,7 +3,7 @@ import { makeStyles, Grid, Typography, Button } from "@material-ui/core";
 import { Store } from "./Store";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { useLocation, Link } from "react-router-dom";
-import { loadStores, getCountItems } from "../utils/storeUtils";
+import { loadStores, getItemsCount } from "../utils/storeUtils";
 import { Layout } from "./Layout";
 
 const useStyles = makeStyles({
@@ -24,7 +24,7 @@ const StoreList = () => {
       visible: true,
       product: productName,
       store: storeName,
-      count: getCountItems(productId, storeId),
+      count: getItemsCount(productId, storeId),
       handleClose,
     });
   };
