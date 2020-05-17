@@ -7,6 +7,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Typography, makeStyles, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles({
   root: {
@@ -89,4 +90,12 @@ export const ConfirmDialog = ({
       </DialogContent>
     </Dialog>
   );
+};
+
+ConfirmDialog.propTypes = {
+  visible: PropTypes.bool,
+  product: PropTypes.number,
+  store: PropTypes.number,
+  count: PropTypes.number,
+  handleClose: PropTypes.func,
 };

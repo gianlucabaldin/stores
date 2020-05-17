@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { Button, Card, Typography, makeStyles, Box } from "@material-ui/core";
 
@@ -56,4 +57,11 @@ export const Store = ({ id, name, distance, onClick }) => {
       </Card>
     </div>
   );
+};
+
+Store.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  distance: PropTypes.number,
+  onClick: PropTypes.func,
 };

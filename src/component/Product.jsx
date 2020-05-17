@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import {
   Button,
@@ -64,4 +65,10 @@ export const Product = ({ id, name, description }) => {
       </Card>
     </div>
   );
+};
+
+Product.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  description: PropTypes.string,
 };
