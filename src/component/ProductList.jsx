@@ -78,9 +78,15 @@ export const ProductList = () => {
         </Grid>
         <Grid container>
           <Grid item xs={12}>
-            {products.map((product) => (
-              <Product key={product.id} {...product} />
-            ))}
+            {products && products.length > 0 ? (
+              products.map((product) => (
+                <Product key={product.id} {...product} />
+              ))
+            ) : (
+              <Typography variant="body2" color="textSecondary">
+                Nessun risultato trovato
+              </Typography>
+            )}
           </Grid>
         </Grid>
       </Grid>
