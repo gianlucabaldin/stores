@@ -30,7 +30,6 @@ export default () => (
  */
 const checkProduct = ({ location }) => {
   const { state } = location;
-  debugger;
   return state !== undefined && !!state.productId && !!state.productName ? (
     <StoreList />
   ) : (
